@@ -1,3 +1,8 @@
+<?php
+spl_autoload_register(function ($class_name) {
+    include 'dashboard/lib/' . $class_name . '.php';
+});
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,9 +80,8 @@
             </div>
             <div class="row">
                 <div class="large-12 columns">
-                    <h2>All Projects</h2>
                     <?php
-                        include 'view/addForm.html';
+                        include 'view/home.html';
                     ?>
                 </div>
             </div>
@@ -88,7 +92,10 @@
                 <div class="large-12 columns">
                     <div class="row">
                         <div class="large-4 columns">
-                            <p class="text-right">Copyright (c) 2017, Apache Friends modify by Sisa</p>
+                            <p class="text-left">Copyright (c) 2017, Apache Friends modify by Sisa</p>
+                        </div>
+                        <div class="large-4 columns">
+                            <p class="text-right">Mod Version: 0.0.3 alpha</p>
                         </div>
                     </div>
                 </div>
