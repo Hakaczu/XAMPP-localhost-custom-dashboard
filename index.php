@@ -60,7 +60,7 @@ spl_autoload_register(function ($class_name) {
                 <section class="top-bar-section">
                     <!-- Right Nav Section -->
                     <ul class="right">
-                        <li class=""><a href="">Add Project</a></li>
+                        <li class=""><a href="index.php?view=add">Add Project</a></li>
                         <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
                         <li class=""><a target="_blank" href="/phpmyadmin/">phpMyAdmin</a></li>
                         <li class=""><a target="_blank" href="">Original Dashboard</a></li>
@@ -81,7 +81,7 @@ spl_autoload_register(function ($class_name) {
             <div class="row">
                 <div class="large-12 columns">
                     <?php
-                        include 'view/home.html';
+                        include 'dashboard/router.php';
                     ?>
                 </div>
             </div>

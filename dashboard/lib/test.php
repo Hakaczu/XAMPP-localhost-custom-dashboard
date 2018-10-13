@@ -2,6 +2,6 @@
 include 'Project.php';
 include 'DbSqliteConnect.php';
 
-$project = new Project('test', 'test');
-$db = new DbSqliteConnect();
-print $db->insertProject($project);
+$test = new Project('xampp', 'C:\xampp\htdocs\cycekkkk\index.php');
+$link = $test->__get('projectXamppPath');
+echo '<a target="blank" href="'.$link.'">Link</a>';
