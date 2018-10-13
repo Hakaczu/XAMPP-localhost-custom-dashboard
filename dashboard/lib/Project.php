@@ -1,8 +1,8 @@
 <?php
     class Project {
-        private $projectName;
-        private $projectPath;
-        private $projectXamppPath;
+        public $projectName;
+        public $projectPath;
+        public $projectXamppPath;
 
         public function __construct(string $projectName, string $projectPath)
         {

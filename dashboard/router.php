@@ -1,27 +1,20 @@
 <?php
-    if(isset($_GET['view']) && !empty($_GET['view'])){
-        $request = $_GET['view'];
-        
+    if(isset($_GET['action']) && !empty($_GET['action'])){
+       $request = $_GET['action'];
         switch($request){
-            case 'add':
+            case 'addForm':
                 require 'view/addForm.html';
                 break;
-            default: 
-                require 'view/home.html';
-        }
-    }elseif(isset($_GET['action']) && !empty($_GET['action'])){
-        $request = $_GET['action'];
-        switch($request){
             case 'addProject':
                 require 'dashboard/action/addProject.php';
                 break;
             default: 
-                require 'view/home.html';
+                require 'view/home.php';
         }
 
     }
     else{
-        require 'view/home.html';
+        require 'view/home.php';
     }
     
 ?>

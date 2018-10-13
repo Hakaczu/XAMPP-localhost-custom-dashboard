@@ -1,7 +1,8 @@
 <?php
+
     class DbSqliteConnect{
         protected $connection;
-        private $path = '../xampp.sqlite';
+        private $path = 'dashboard/xampp.sqlite';
 
         public function __construct(){
             try {
@@ -15,13 +16,49 @@
 
         public function insertProject(Project $project) {
             $sql = 'INSERT INTO projects(project_name, project_path, project_xampp_path) VALUES(:project_name, :project_path, :project_xampp_path)';
+            //$sql = 'INSERT INTO projects(project_name, project_path, project_xampp_path) VALUES(test,test,test)';          
             $query = $this->connection->prepare($sql);
-            $query->bindValue(':project_name', $project->__get('projectName'));
-            $query->bindValue(':project_path', $project->__get('projectPath'));
-            $query->bindValue(':project_xampp_path', $project->__get('projectXamppPath'));
-            $query->execute();
-            return $this->connection->lastInsertId();
+            if($query){
+
+                $query->bindValue(":project_name", $project->projectName, PDO::PARAM_STR);
+                $query->bindValue(':project_path', $project->projectPath, PDO::PARAM_STR);
+                $query->bindValue(':project_xampp_path', $project->projectXamppPath, PDO::PARAM_STR);
+                
+                $query->execute();
+                if($query){
+                    return 'Succesfull Add '. $project->projectName;
+                }
+                else{
+                    return 'Failed insert project';
+                }
+            }else{
+                return 'Failed insert project';
+            }
+  
+            
         }
 
-    }
+        public function getProjectObjectList() {
+            $sql = 'SELECT rowid, project_name, project_xampp_path FROM projects';
+            $query = $this->connection->query($sql);
+            $projects = [];
+            while($project = $query->fetchObject()){
+                $projects[]=$project;
+            }
+            return $projects;
+            
+        }
+
+        public function getProjectById($rowid)
+        {
+            $query = $this->_connection->prepare("SELECT * FROM projects WHERE rowid=" . $id);
+            $query->execute();
+            $result = $query->fetchObject();
+            if (isset($result)) {
+                return $result;
+            } else {
+                return $id;
+            }
+        }
+}
 ?>

@@ -19,14 +19,14 @@ spl_autoload_register(function ($class_name) {
         <meta name="description" content="XAMPP is an easy to install Apache distribution containing MariaDB, PHP and Perl." />
         <meta name="keywords" content="xampp, apache, php, perl, mariadb, open source distribution" />
 
-        <link href="/dashboard/stylesheets/normalize.css" rel="stylesheet" type="text/css" />
-        <link href="/dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
+        <link href="dashboard/stylesheets/normalize.css" rel="stylesheet" type="text/css" />
+        <link href="dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
         <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-        <script src="/dashboard/javascripts/modernizr.js" type="text/javascript"></script>
+        <script src="dashboard/javascripts/modernizr.js" type="text/javascript"></script>
 
 
-        <link href="/dashboard/images/favicon.png" rel="icon" type="image/png" />
+        <link href="dashboard/images/favicon.png" rel="icon" type="image/png" />
     </head>
 </head>
 
@@ -60,7 +60,7 @@ spl_autoload_register(function ($class_name) {
                 <section class="top-bar-section">
                     <!-- Right Nav Section -->
                     <ul class="right">
-                        <li class=""><a href="index.php?view=add">Add Project</a></li>
+                        <li class=""><a href="index.php?action=addForm">Add Project</a></li>
                         <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
                         <li class=""><a target="_blank" href="/phpmyadmin/">phpMyAdmin</a></li>
                         <li class=""><a target="_blank" href="">Original Dashboard</a></li>
@@ -95,7 +95,7 @@ spl_autoload_register(function ($class_name) {
                             <p class="text-left">Copyright (c) 2017, Apache Friends modify by Sisa</p>
                         </div>
                         <div class="large-4 columns">
-                            <p class="text-right">Mod Version: 0.0.3 alpha</p>
+                            <p class="text-right">Mod Version: Alpha</p>
                         </div>
                     </div>
                 </div>
