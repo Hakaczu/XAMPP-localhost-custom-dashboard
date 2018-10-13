@@ -61,9 +61,9 @@ spl_autoload_register(function ($class_name) {
                     <!-- Right Nav Section -->
                     <ul class="right">
                         <li class=""><a href="index.php?action=addForm">Add Project</a></li>
-                        <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
+                        <li class=""><a target="_blank" href="dashboard/action/phpinfo.php">PHPInfo</a></li>
                         <li class=""><a target="_blank" href="/phpmyadmin/">phpMyAdmin</a></li>
-                        <li class=""><a target="_blank" href="">Original Dashboard</a></li>
+                        <!-- <li class=""><a target="_blank" href="">Original Dashboard</a></li> -->
                         <li class=""><a target="_blank" href="http://sisa.kess.com.pl/">About Modder</a></li>
                     </ul>
                 </section>

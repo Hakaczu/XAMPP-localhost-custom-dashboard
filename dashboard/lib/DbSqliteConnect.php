@@ -41,11 +41,13 @@
         public function getProjectObjectList() {
             $sql = 'SELECT rowid, project_name, project_xampp_path FROM projects';
             $query = $this->connection->query($sql);
-            $projects = [];
-            while($project = $query->fetchObject()){
-                $projects[]=$project;
+            if($query){
+                $projects = [];
+                while($project = $query->fetchObject()){
+                    $projects[]=$project;
+                }
+                return $projects;
             }
-            return $projects;
             
         }
 

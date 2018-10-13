@@ -3,18 +3,18 @@
        $request = $_GET['action'];
         switch($request){
             case 'addForm':
-                require 'view/addForm.html';
+                require 'dashboard/view/addForm.html';
                 break;
             case 'addProject':
                 require 'dashboard/action/addProject.php';
                 break;
             default: 
-                require 'view/home.php';
+                require 'dashboard/view/home.php';
         }
 
     }
     else{
-        require 'view/home.php';
+        require 'dashboard/view/home.php';
     }
     
 ?>
