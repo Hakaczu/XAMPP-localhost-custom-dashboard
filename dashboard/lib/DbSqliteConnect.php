@@ -20,7 +20,7 @@
             $query = $this->connection->prepare($sql);
             if($query){
 
-                $query->bindValue(":project_name", $project->projectName, PDO::PARAM_STR);
+                $query->bindValue(':project_name', $project->projectName, PDO::PARAM_STR);
                 $query->bindValue(':project_path', $project->projectPath, PDO::PARAM_STR);
                 $query->bindValue(':project_xampp_path', $project->projectXamppPath, PDO::PARAM_STR);
                 
@@ -36,6 +36,22 @@
             }
   
             
+        }
+        public function deleteProject(int $rowid){
+            $sql = 'DELETE FROM projects WHERE rowid=:rowid';
+            $query = $this->connection->prepare($sql);
+            if($query){
+                $query->bindValue(':rowid', $rowid, PDO::PARAM_INT);
+                $query->execute();
+                
+                if($query){
+                    return 'Succesfull Delete Project';
+                }else{
+                    return 'Failed delete project';
+                }
+            }else{
+                return 'Failed delete project';
+            }
         }
 
         public function getProjectObjectList() {
@@ -53,7 +69,7 @@
 
         public function getProjectById($rowid)
         {
-            $query = $this->_connection->prepare("SELECT * FROM projects WHERE rowid=" . $id);
+            $query = $this->_connection->prepare("SELECT * FROM projects WHERE rowid=" . $rowid);
             $query->execute();
             $result = $query->fetchObject();
             if (isset($result)) {

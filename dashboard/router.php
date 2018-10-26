@@ -8,6 +8,9 @@
             case 'addProject':
                 require 'dashboard/action/addProject.php';
                 break;
+            case 'deleteProject':
+                require 'dashboard/action/deleteProject.php';
+                break;
             default: 
                 require 'dashboard/view/home.php';
         }

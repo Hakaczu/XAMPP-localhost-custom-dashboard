@@ -3,6 +3,7 @@
         public $projectName;
         public $projectPath;
         public $projectXamppPath;
+        private static $serverRoot = 'C:/xampp/htdocs';
 
         public function __construct(string $projectName, string $projectPath)
         {
@@ -14,9 +15,8 @@
         private function generateXamppPath(string $projectPath){
             $projectPath = str_replace('\\','/', $projectPath);
             $len = strlen($projectPath);
-            $marker = strpos($projectPath,'xampp\htdocs');
-            #$xamppPath = 'localhost/';
-            $xamppPath = substr($projectPath, $marker+16, $len - $marker - 16);
+            $marker = strpos($projectPath, self::$serverRoot);
+            $xamppPath = substr($projectPath, $marker + strlen(self::$serverRoot));
             return $xamppPath;
         }
 
