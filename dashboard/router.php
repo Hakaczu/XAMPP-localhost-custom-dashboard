@@ -7,9 +7,17 @@
                 break;
             case 'addProject':
                 require 'dashboard/action/addProject.php';
+                require 'dashboard/view/home.php';
                 break;
             case 'deleteProject':
                 require 'dashboard/action/deleteProject.php';
+                break;
+            case 'editForm':
+                require 'dashboard/view/projectEditForm.php';
+                break;
+            case 'editProject':
+                require 'dashboard/action/editProject.php';
+                require 'dashboard/view/home.php';
                 break;
             default: 
                 require 'dashboard/view/home.php';

@@ -9,14 +9,13 @@
                 $this->connection = new PDO("sqlite:".$this->path);
             }
             catch(PDOException $e) {
-                 // bład przy otwieraniu/tworzeniu bazy 
+                 // blad przy otwieraniu/tworzeniu bazy 
                 echo $e->getMessage();
             }
         }
 
         public function insertProject(Project $project) {
-            $sql = 'INSERT INTO projects(project_name, project_path, project_xampp_path) VALUES(:project_name, :project_path, :project_xampp_path)';
-            //$sql = 'INSERT INTO projects(project_name, project_path, project_xampp_path) VALUES(test,test,test)';          
+            $sql = 'INSERT INTO projects(project_name, project_path, project_xampp_path) VALUES(:project_name, :project_path, :project_xampp_path)';         
             $query = $this->connection->prepare($sql);
             if($query){
 
@@ -37,6 +36,30 @@
   
             
         }
+        
+        public function editProject(int $rowid, Project $project){
+            $sql = 'UPDATE projects SET project_name=:project_name, project_path=:project_path, project_xampp_path=:project_xampp_path WHERE rowid=:rowid';
+            $query = $this->connection->prepare($sql);
+            if($query){
+                
+                $query->bindValue(':project_name', $project->projectName, PDO::PARAM_STR);
+                $query->bindValue(':project_path', $project->projectPath, PDO::PARAM_STR);
+                $query->bindValue(':project_xampp_path', $project->projectXamppPath, PDO::PARAM_STR);
+                $query->bindValue(':rowid', $rowid, PDO::PARAM_INT); 
+                $query->execute();
+                if($query){
+                    return 'Succesfull Update '. $project->projectName;
+                }
+                else{
+                    return 'Failed update project';
+                }
+            }else{
+                return 'Failed update project';
+            }
+            
+        }
+        
+        
         public function deleteProject(int $rowid){
             $sql = 'DELETE FROM projects WHERE rowid=:rowid';
             $query = $this->connection->prepare($sql);
@@ -69,13 +92,13 @@
 
         public function getProjectById($rowid)
         {
-            $query = $this->_connection->prepare("SELECT * FROM projects WHERE rowid=" . $rowid);
+            $query = $this->connection->prepare("SELECT rowid, * FROM projects WHERE rowid=" . $rowid);
             $query->execute();
             $result = $query->fetchObject();
             if (isset($result)) {
                 return $result;
             } else {
-                return $id;
+                return false;
             }
         }
 }
